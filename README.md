@@ -96,6 +96,6 @@ skill's agent-facing instructions were developed test-first: baseline agent
 runs without the skill reproduced both failure modes (foreground sleep,
 sudo scheduling), and the same scenarios pass with the skill loaded.
 
-## Author
+## Author & license
 
-Serhii Ivanov. Feedback: GitHub issues.
+Serhii Ivanov. Feedback: GitHub issues. Licensed under [MIT](LICENSE).
