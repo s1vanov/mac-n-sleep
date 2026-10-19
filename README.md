@@ -28,14 +28,12 @@ was written.
 
 ## How it differs from the obvious alternative
 
-[scheduleoff](https://github.com/swpease/scheduleoff) is the closest existing
-tool: a CLI wrapper for near-term sleep/shutdown scheduling. It builds on
-`pmset schedule` (per its README, read 2026-08-26), which requires root —
-verified locally the same day: `sudo -n true` → "a password is required", so
-in an unattended overnight session the password prompt would silently block.
-`goodnight.sh` instead uses a detached userspace timer plus `pmset sleepnow`,
-which needs no sudo, and adds the agent-specific grace period that no
-existing tool has (none of them is designed to be called by an agent).
+The obvious way to schedule sleep on macOS is `pmset schedule`, which requires
+root — verified locally on 2026-08-26: `sudo -n true` → "a password is
+required", so in an unattended overnight session the password prompt would
+silently block. `goodnight.sh` instead uses a detached userspace timer plus
+`pmset sleepnow`, which needs no sudo, and adds a grace period meant for an
+agent that calls it as the last step of a task.
 
 ## Install
 
@@ -76,18 +74,6 @@ scripts/goodnight.sh cancel
   it would put the test machine to sleep mid-session); its sudo-free
   behavior is inferred from `displaysleepnow` on the same privileged path
   and will be confirmed by the first real use.
-
-## Similar projects
-
-- [scheduleoff](https://github.com/swpease/scheduleoff) — better if you want
-  system-level `pmset schedule` semantics and don't mind sudo.
-- [Sleep Utility](https://apps.apple.com/us/app/sleep-utility/id1206520984) —
-  better for humans: a menu-bar sleep timer with a GUI.
-- [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake),
-  [Caffeinate](https://github.com/LennardKittner/Caffeinate) — the opposite
-  job (keep the Mac awake); listed to save you the search.
-
-Claims about these projects reflect their READMEs as read on 2026-08-26.
 
 ## Status
 
